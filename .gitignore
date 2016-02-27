@@ -11,5 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
-#/config/database.yml
-#/config/secret.yml
+/config/database.yml
+/config/secret.yml
+/db/seeds.rb

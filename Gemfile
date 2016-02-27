@@ -8,6 +8,7 @@ gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
 #gem 'sass-rails', '~> 5.0'
 gem "sass", "3.2.19"
+gem "sprockets", "2.12.3"
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -45,6 +46,8 @@ group :development, :test do
   gem "capybara"
   gem "database_cleaner"
   gem "selenium-webdriver"
+  gem "teaspoon-jasmine"
+  gem "phantomjs"
 end
 
 group :development do
