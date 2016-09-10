@@ -11,24 +11,50 @@ class Hello extends React.Component {
   }
 }
 
+//Parent Component
 class HelloUser extends React.Component {
-  constructor () {
-    super();
+  constructor (props) {
+    super(props);
 
     this.state = {
-      username: '@kohrVid'
+      username: '@kohrVid',
+      stuffedAnimals: ["Azul the Bear", "Pandora the Panda", "Lucretzia Purrgia", "Nikki the Pikachu"]
     };
   }
   
   render () {
     return (
       <div>
-	Hey there, { this.state.username } <br />
-	Change Name: <input type="text" value={ this.state.username } onChange={
-	  e => this.setState({ username: e.target.value })
-	} />
+	<h1>Hey there, { this.state.username }</h1>
+	<p>
+	  Change Name: <input type="text" value={ this.state.username } onChange={
+	    e => this.setState({ username: e.target.value })
+	  } />
+	</p>
+	<h2>These are my stuffed animals:</h2>
+	<p>
+	  <ShowList names={this.state.stuffedAnimals} />
+	</p>
       </div>
     );
+  }
+}
+
+//Child Component
+class ShowList extends React.Component {
+  render () {
+    var listItems = this.props.names.map(function (toy){
+      return (
+	<li>{ toy }</li>
+      );
+    });
+    return (
+      <div>
+	<ul>
+	  { listItems }
+	</ul>
+      </div>
+    )
   }
 }
 
