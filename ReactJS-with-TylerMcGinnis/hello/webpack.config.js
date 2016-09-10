@@ -3,6 +3,10 @@ var webpack = require("webpack");
 
 module.exports = {
   entry: "./main.js",
+  devServer: {
+    inline: true,
+    port: 8081
+  },
   output: { path: __dirname, filename: "bundle.js" },
   module: {
     loaders: [

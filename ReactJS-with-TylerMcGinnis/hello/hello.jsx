@@ -11,4 +11,25 @@ class Hello extends React.Component {
   }
 }
 
-ReactDOM.render(<Hello/>, document.getElementById("app"));
+class HelloUser extends React.Component {
+  constructor () {
+    super();
+
+    this.state = {
+      username: '@kohrVid'
+    };
+  }
+  
+  render () {
+    return (
+      <div>
+	Hey there, { this.state.username } <br />
+	Change Name: <input type="text" value={ this.state.username } onChange={
+	  e => this.setState({ username: e.target.value })
+	} />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<HelloUser/>, document.getElementById("app"));
