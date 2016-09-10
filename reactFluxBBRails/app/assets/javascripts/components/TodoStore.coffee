@@ -1,14 +1,23 @@
-TodoDispatcher = require("./TodoDispatcher")
+Backbone = require("backbone")
+TodoDispatcher = require("../dispatcher")
 
-TodoStore = { intems: [] }
+TodoItem = Backbone.Model.extend({})
 
-TodoStore.dispatchCallback = (payload) ->
-  switch payload.actionType
-    when "add-item"
-      TodoStore.items.push payload.item
-    when "delete-last-item"
-      TodoStore.items.pop()
+TodoCollection = Backbone.Collection.extend
+  model: TodoItem
+  url: "/todo"
 
-TodoStore.dispatchToken = TodoDispatcher.registerCallback(TodoStore.dispatchCallback)
+  initialize: ->
+    @dispatchToken = TodoDispatcher.register(@dispatchCallback)
 
+  dispatchCallback: (payload) =>
+    switch payload.actionType
+      when "todo-delete"
+        @remove payload.todo
+      when "todo-add"
+        @add payload.todo
+      when "todo-update"
+        @add payload.todo, merge: true
+
+TodoStore = new TodoCollection()
 module.exports = TodoStore

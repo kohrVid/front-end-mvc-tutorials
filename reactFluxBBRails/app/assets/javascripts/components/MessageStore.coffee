@@ -1,7 +1,7 @@
 MyDispatcher = require("./MyDispatcher")
 TodoStore = require("./TodoStore")
 
-MessageStore = { items: [] }
+MessageStore = merge(EventEmitter.prototype, { items: [] })
 
 MesageStore.dispatchCallback = (payload) ->
   switch payload.actionType
