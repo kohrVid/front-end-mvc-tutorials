@@ -1,0 +1,6 @@
+Entry.create!(name: "Matz")
+Entry.create!(name: "DHH")
+Entry.create!(name: "Yehuda Katz")
+Entry.create!(name: "Sand Metz")
+Entry.create!(name: "Jose Valim")
+Entry.create!(name: "Aaron Patterson")
