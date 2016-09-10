@@ -13,4 +13,4 @@ ItemAddComponent = React.createClass
     React.DOM.button {
       onClick: @handleAddItem
     },
-    "Add an Item!"
+      "Add an Item!"
