@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Zooming in a Graph</title>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+  <body>
+    <svg width="300" height="180">
+      <g transform ="translate(5,15)">
+	<text x="0" y="0">Howdy!</text>
+      </g>
+      <g transform="translate(5, 55)">
+      <!-- M: move to position; L: line to position; Q: curve to (quadratic)-->
+	<path d="M0,50 L50,0 Q100,0 100,50"
+       fill="none" stroke-width="3" stroke="black">
+      </g>
+      <g tranform="translate(5, 105)">
+      <!-- C: curve to (cubic); Z: close shape -->
+	<path d="M0,100 C0,0 25,0 125,100 Z" fill="black">
+      </g>
+    </svg>
+  </body>
+</html>
