@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Angular JS Custom Directives</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+  </head>
+  <body>
+    <h1>AngularJS Sample Application</h1>
+
+    <div ng-app="mainApp" ng-controller="StudentController">
+      <student name="Jessica"></student>
+      <br>
+      <student name="Azul"></student>
+    </div>
+
+    <script>
+      var mainApp = angular.module("mainApp", []);
+      mainApp.directive("student", function () {
+	var directive = {};
+	directive.restrict = "E";
+	directive.template = "Student: <b>{{ student.name }}</b>, RollNo: <b>{{ student.rollno }}</b>";
+
+	directive.scope = {
+	  student: "=name"
+	}
+
+	directive.compile = function (element, attributes) {
+	  element.css("border", "1px solid #ccc");
+
+	  var linkFunction = function ($scope, element, attributes) {
+	    element.html("Student: <b>" + $scope.student.name + "</b>, Roll No: <b>"
+		+ $scope.student.rollno + "</b><br>");
+	    element.css("background-color", "#ff00ff");
+	  }
+	  return linkFunction;
+	}
+	return directive;
+      });
+
+      mainApp.controller("StudentController", function ($scope) {
+	$scope.Jessica = {};
+	$scope.Jessica.name = "Jessica Ete";
+	$scope.Jessica.rollno = 1;
+
+	$scope.Azul = {}
+	$scope.Azul.name = "Azul d'Bear";
+	$scope.Azul.rollno = 2;
+      });
+    </script>
+  </body>
+</html>
