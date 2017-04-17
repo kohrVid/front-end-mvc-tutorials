@@ -1,4 +1,4 @@
-#Intro to d3
+# Intro to d3
 
 Reading through Square's online [d3 tutorial](https://square.github.io/intro-to-d3).
 

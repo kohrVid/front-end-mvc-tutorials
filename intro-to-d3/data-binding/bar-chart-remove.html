@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Intro to D3</title>
+    <style>
+      svg {
+	padding: 50px;
+      }
+    </style>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script>
+      window.onload = function () {
+	var height = 150;
+	var padding = 50;
+	var sales1 = [
+	  { product: "Hoodie", count: 7 },
+	  { product: "Jacket", count: 6 },
+	  { product: "Snuggie", count: 9 }
+	];
+	
+	var sale2 = [
+	  { product: "Hoodie", count: 6 },
+	  { product: "Jacket", count: 9 },
+	  { product: "Snuggie", count: 1 }
+	];
+
+	var products = sales.map(function (d) {
+	  return d.product;
+	});
+
+	var maxCount = d3.max(sales, function (d,i) {
+	  return d.count;
+	});
+	//Note, the y-scale goes down in SVG
+	var y = d3.scaleBand(d3.schemeAccent).domain(products)
+	  .range([0, (height + padding)]);
+	var x = d3.scaleLinear().domain([0, maxCount]).range([0, 300]);
+
+	var xAxis = d3.axisBottom(x);
+	var yAxis = d3.axisLeft(y).tickValues(products);
+
+	var svg = d3.select("body").append("svg")
+		    .attr("width", 300)
+		    .attr("height", height + (2 * padding));
+
+	svg.append("g").call(xAxis)
+	  .attr("transform", "translate(0," + (height + padding) + ")")
+	  .selectAll("text").style("text-anchor", "end")
+	  .attr("dx", "-.8em")
+	  .attr("dy", ".15em")
+	  .attr("transform", "rotate(-65)");
+	svg.append("g").call(yAxis);
+	
+	var rects = svg.selectAll("rect").data(sales1, function (d, i) {
+	  return d.product;
+	});
+	rects.enter().append("rect");
+	var nextRects = rects.data(sales2, function (d,i) {
+	  return d.product;
+	});
+	rects.enter().append("rect");
+	rects.size();
+	var nextRects = rects.data(sales1, function (d,i) {
+	  return d.product;
+	});
+	nextRects.
+
+	rects = rects.data(sales);
+	var rectsToRemove = rects.exit();
+	rectsToRemove.size();
+	rectsToRemove.remove();
+
+      };
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

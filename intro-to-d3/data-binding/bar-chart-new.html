@@ -27,7 +27,7 @@
 	  return d.count;
 	});
 	//Note, the y-scale goes down in SVG
-	var y = d3.scaleBand().domain(products)
+	var y = d3.scaleBand(d3.schemeAccent).domain(products)
 	  .range([0, (height + padding)]);
 	var x = d3.scaleLinear().domain([0, maxCount]).range([0, 300]);
 
