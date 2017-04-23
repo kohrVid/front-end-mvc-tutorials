@@ -1,0 +1,3 @@
+.fake-link:link, .fake-link:visited, .fake-link:hover, .fake-link:active {
+  text-decoration: underline;
+}

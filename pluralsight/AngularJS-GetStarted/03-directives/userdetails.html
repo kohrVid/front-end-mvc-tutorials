@@ -1,0 +1,24 @@
+<h2 class="data-ng-binding">{{ user.name }}</h2>
+<img width="100px" data-ng-src="{{ user.avatar_url }}" alt="{{ user.login }}">
+Order:
+<select data-ng-model="repoSortOrder">
+  <option value="+name">Name</option>
+  <option value="-stargazers_count" selected="selected">Stars</option>
+  <option value="+language">Language</option>
+</select>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Stars</th>
+      <th>Language</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-ng-repeat="repo in repos | orderBy: repoSortOrder" class="data-ng-scope">
+      <td>{{ repo.name }}</td>
+      <td>{{ repo.stargazers_count | number }}</td>
+      <td>{{ repo.language }}</td>
+    </tr>
+  </tbody>
+</table>

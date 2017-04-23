@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html data-ng-app="githubViewer">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="angular.min.js"></script>
+    <script src="script.js"></script>
+    <title>Hello</title>
+  </head>
+  <body>
+    <div data-ng-controller="MainController">
+      <h1>{{ message }}</h1>
+
+      <div>
+        {{ error }}
+      </div>
+
+      {{ countdown }}
+      <form name="searchUser">
+        <input type="search" placeholder="Username to find" data-ng-model="username">
+        <input type="submit" value="Search" data-ng-click="search(username)">
+      </form>
+
+      <div data-ng-include src="'userdetails.html'" data-ng-show="user"></div>
+    </div>
+  </body>
+</html>

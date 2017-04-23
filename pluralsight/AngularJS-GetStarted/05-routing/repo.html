@@ -1,0 +1,39 @@
+<div>
+  <h2 class="data-ng-binding">{{ repoName }}</h2>
+  {{ error }}
+  <p>
+    <strong>Owner:</strong> {{ username }}
+  </p>
+  <p>
+    <strong>Issues:</strong> {{ openIssuesCount }}
+  </p>
+  <strong>Order:</strong>
+  <select data-ng-model="collaboratorSortOrder">
+    <option value="+login" selected="selected">Login</option>
+    <option value="+type">Type</option>
+    <option value="+contributions">Contributions</option>
+    <option value="-contributions">Contributions (DESC)</option>
+  </select>
+</div>
+
+Collaborators:
+<table>
+  <thead>
+    <tr>
+      <th>Login</th>
+      <th>Avatar</th>
+      <th>Type</th>
+      <th>Contributions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-ng-repeat="collaborator in collaborators | orderBy: collaboratorSortOrder" class="data-ng-scope">
+      <td>{{ collaborator.login }}</td>
+      <td><img width="50px" data-ng-src="{{ collaborator.avatar_url }}" alt="{{ collaborator.login}}"></td>
+      <td>{{ collaborator.type }}</td>
+      <td>{{ collaborator.contributions | number }}</td>
+    </tr>
+  </tbody>
+</table>
+<a href="/#!/main">Back to search</a>
+<a href="/#!/users/{{ username }}">Back to user</a>
