@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>AngularJS Expressions</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+  </head>
+  <body>
+    <h1>Sample Application</h1>
+    <div ng-app="" ng-init="quantity = 1; cost = 30; student = {firstname:'Jessica', lastname:'Ete',rollno:101};marks = [80,90,75,73]">
+      <p>
+	Hello {{ student.firstname + " " + student.lastname }}!
+      </p>
+      <p>
+	Expense on Books: £{{ cost * quantity }}
+      </p>
+      <p>
+	Roll No: {{ student.rollno }}
+      </p>
+      <p>
+	Marks(Maths): {{ marks[3] }}
+      </p>
+    </div>
+    
+  </body>
+</html>

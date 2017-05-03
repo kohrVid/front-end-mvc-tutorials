@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Intro to D3</title>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script>
+    var numbers = [5,4,10,1],
+      data = [
+	{ date: "2014-01-01", amount: 10 },
+	{ date: "2014-02-01", amount: 20 },
+	{ date: "2014-03-01", amount: 40 },
+	{ date: "2014-04-01", amount: 80 }
+      ];
+    console.log(d3.min(numbers));
+    console.log(d3.max(data, function (d, i) { return d.amount }));
+    console.log(d3.extent(numbers));
+  </script>
+</head>
+  <body>
+    <svg width="300" height="180">
+
+    </svg>
+  </body>
+</html>

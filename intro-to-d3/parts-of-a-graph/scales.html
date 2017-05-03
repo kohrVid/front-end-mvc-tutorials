@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Intro to D3</title>
+  <style>
+    svg {
+      padding: 50px;
+    }
+  </style>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script>
+    window.onload = function () {
+      var height = 150;
+      var padding = 50;
+      var numbers = [5,4,10,1],
+	data = [
+	  { date: "2014-01-01", amount: 10 },
+	  { date: "2014-02-01", amount: 20 },
+	  { date: "2014-03-01", amount: 40 },
+	  { date: "2014-04-01", amount: 80 }
+	];
+
+	  //Note, the y-scale goes down in SVG
+	var y = d3.scaleLinear().domain(
+	    d3.extent(data, function (d) { return d.amount })
+	).range([200, 0]);
+	var x = d3.scaleTime().domain(
+	    d3.extent(data, function (d) { return new Date(Date.parse(d.date)); })
+	).range([0, 300]);
+
+	var xAxis = d3.axisBottom(x);
+	var yAxis = d3.axisLeft(y).ticks(4, "s");
+
+
+	var svg = d3.select("body").append("svg")
+		    .attr("width", 300)
+		    .attr("height", height + (2 * padding));
+
+	svg.append("g").call(yAxis);
+	svg.append("g").call(xAxis)
+	  .attr("transform", "translate(0," + (height + padding) + ")")
+	  .selectAll("text").style("text-anchor", "end")
+	  .attr("dx", "-.8em")
+	  .attr("dy", ".15em")
+	  .attr("transform", "rotate(-65)");
+
+      };
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
